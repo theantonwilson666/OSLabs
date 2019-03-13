@@ -80,10 +80,10 @@ int main(){
         c1 = initCMD(c1);
     //    printf("argNumb:%d\n", c1.argNumb);
 //        printf("args:\t");
-        for(int i=0; i < c1.argNumb; i++)
-          puts(c1.argv[i]);
+      //  for(int i=0; i < c1.argNumb; i++)
+      //    puts(c1.argv[i]);
         if (c1.argNumb == -1)
-          return -1;
+          return 4;
         if (c1.argNumb == 0)
           rv = execlp(c1.cmd,c1.cmd,NULL);
         else
@@ -96,7 +96,7 @@ int main(){
       default: // родитель
         waitpid(0,&status,0);
       //  printf("status:%d\n", status);
-        if (WEXITSTATUS(status) == -1){
+        if (status == 1024){
           printf("EXIT\n");
           return 0;
         }
